@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/chat-app/static/css/main.46da56fe.css",
+    "main.js": "/chat-app/static/js/main.67fcab08.js",
+    "static/media/login-bg.png": "/chat-app/static/media/login-bg.d141163a418ac498d987.png",
+    "index.html": "/chat-app/index.html",
+    "main.46da56fe.css.map": "/chat-app/static/css/main.46da56fe.css.map",
+    "main.67fcab08.js.map": "/chat-app/static/js/main.67fcab08.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.46da56fe.css",
+    "static/js/main.67fcab08.js"
+  ]
+}
