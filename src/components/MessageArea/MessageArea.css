@@ -1,0 +1,125 @@
+.message-area {
+  /* margin-left: 300px; */
+  padding: 1rem;
+  position: fixed;
+  height: 100vh;
+  left: 300px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: #a9b5df;
+}
+.menu {
+  display: none;
+}
+.message-area .message-area-header .message-area-header-left {
+  display: flex;
+  gap: 1rem;
+}
+.message-area .chatting-space {
+  height: 100vh;
+  overflow-y: scroll;
+  padding-top: 100px;
+  padding-bottom: 200px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.message-area .chatting-space .conversation-box .sender {
+  background-color: white;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  padding: 1rem 1rem 0.1rem 1rem;
+}
+.message-area .chatting-space .conversation-box .receiver {
+  background-color: #b3d8a8;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  padding: 1rem 1rem 0.1rem 1rem;
+}
+.message-area .chatting-space .conversation-box .time small {
+  border-bottom: 0;
+  display: block;
+  text-align: right;
+}
+.sender-row .time small {
+  color: silver;
+}
+.receiver-row .time small {
+  color: #424874;
+}
+.receiver-row {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  margin-bottom: 20px;
+}
+.sender-row {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  margin-bottom: 20px;
+}
+.message-area .message-area-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #f5efe7;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.1);
+  padding: 0.5rem 1rem;
+  overflow: hidden;
+}
+.message-area .message-area-header p {
+  margin-bottom: 0px;
+}
+.message-area .message-area-header .receiver-part {
+  display: flex;
+  align-items: start;
+  flex-direction: column;
+}
+.message-area .message-area-header .receiver-part p {
+  color: black;
+  font-weight: 700;
+}
+.message-area .message-area-header .receiver-part small {
+  color: silver;
+}
+.message-area .message-area-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  padding: 1rem;
+  box-shadow: 4px -4px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+}
+.message-area-footer .input-area {
+  width: 70%;
+}
+.message-area .message-area-footer .input-area input {
+  border: none;
+  width: 100%;
+}
+.message-area .message-area-footer .buttons {
+  width: 30%;
+  margin-left: 10px;
+}
+
+@media (max-width: 1030px) {
+  .message-area {
+    left: 0;
+  }
+  .menu {
+    display: block;
+  }
+}
