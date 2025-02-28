@@ -28,6 +28,9 @@
   border: none;
   outline: none;
   background-color: #35374b;
+  color: white !important;
+}
+.sidebar-header input::placeholder {
   color: white;
 }
 .side-bar input:focus {
@@ -51,7 +54,6 @@
   .open {
     transform: translateX(0%) !important;
     z-index: 500;
-    
   }
   .sidebar-header .close {
     display: block;

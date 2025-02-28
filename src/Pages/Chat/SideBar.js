@@ -13,15 +13,16 @@ import {
 } from "@mui/material";
 import UserProfile from "../../components/UserProfile/Profile";
 import { UserContext } from "../../components/UserContext/UserContext";
-import { auth, db } from "../../firebaseConfig";
-import { useAuth } from "../../components/AuthContext/AuthContext";
+import {db } from "../../firebaseConfig";
+
 
 function SideBar({ open, setOpen }) {
-  const { currUser } = useAuth();
   const [users, setUsers] = useState([]);
-  const {user, dispatch} = useContext(UserContext);
+  const {dispatch} = useContext(UserContext);
+  // !change user function
   const changeUser = (newUser) => {
     dispatch({ type: "CHANGE_USER", payload: newUser });
+    setOpen(false)
   };
   useEffect(() => {
     fetchData();
@@ -51,8 +52,8 @@ function SideBar({ open, setOpen }) {
         </div>
         <input
           type="search"
-          className="border-bottom"
-          placeholder="search friend..."
+          className="input-box"
+          placeholder="Search..."
         />
         <div className="user">
           <UserProfile />
