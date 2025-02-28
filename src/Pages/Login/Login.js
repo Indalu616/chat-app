@@ -26,7 +26,7 @@ function Login() {
           // Signed in
           const user = userCredential.user;
           setUser(user);
-          navigate("/");
+          navigate("/chat-app");
           // ...
         })
         .catch((error) => {

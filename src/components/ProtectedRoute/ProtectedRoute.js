@@ -6,7 +6,7 @@ const ProtectedRoute = ({ children }) => {
   const { currUser } = useAuth(); // Get logged-in user
 
   if (!currUser) {
-    return <Navigate to="/login" replace />; // Redirect to login if not authenticated
+    return <Navigate to="/chat-app/login" replace />; // Redirect to login if not authenticated
   }
 
   return children; // Render protected content if authenticated

@@ -8,14 +8,14 @@ function App() {
     <div className="App">
       <Routes>
         <Route
-          path="/"
+          path="/chat-app"
           element={
             <ProtectedRoute>
               <Home />
             </ProtectedRoute>
           }
         ></Route>
-        <Route path="/login" element={<Login />}></Route>
+        <Route path="/chat-app/login" element={<Login />}></Route>
       </Routes>
     </div>
   );
