@@ -1,5 +1,4 @@
 .message-area {
-  /* margin-left: 300px; */
   padding: 1rem;
   position: fixed;
   height: 100vh;
@@ -17,7 +16,7 @@
   gap: 1rem;
 }
 .message-area .chatting-space {
-  height: 100vh;
+  height: 90vh;
   overflow-y: scroll;
   padding-top: 100px;
   padding-bottom: 200px;
@@ -102,6 +101,7 @@
   align-items: center;
   justify-content: center;
   background-color: white;
+
 }
 .message-area-footer .input-area {
   width: 70%;
