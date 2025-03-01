@@ -36,7 +36,6 @@ function Login() {
           // ...
         })
         .catch((error) => {
-          const errorCode = error.code;
           const errorMessage = error.message;
           setLoading(false);
           setError(errorMessage);
@@ -62,7 +61,7 @@ function Login() {
           // ...
         })
         .catch((error) => {
-          const errorCode = error.code;
+          
           const errorMessage = error.message;
           setLoading(false);
           setError(errorMessage);

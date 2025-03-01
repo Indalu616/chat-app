@@ -62,40 +62,40 @@ function MessageArea({ open, setOpen, isSelected }) {
   }, [user.id, message]);
   return (
     <div className="message-area">
-        <div className="message-area-header">
-          <div className="message-area-header-left">
-            <div
-              className="menu"
-              style={{ cursor: "pointer" }}
-              onClick={() => setOpen(!open)}
-            >
-              <MenuIcon />
-            </div>
-            <div className="receiver-part">
-              <p>{user?.name}</p>
-              {user?.name && user.status ? (
-                <small style={{ color: "#088408" }}>{user.status}</small>
-              ) : (
-                <small>last seen recently</small>
-              )}
-            </div>
+      <div className="message-area-header">
+        <div className="message-area-header-left">
+          <div
+            className="menu"
+            style={{ cursor: "pointer" }}
+            onClick={() => setOpen(!open)}
+          >
+            <MenuIcon />
           </div>
-
-          <div className="messaging-actions">
-            <Stack spacing={2} direction="row" sx={{ color: "action.active" }}>
-              <Badge color="secondary">
-                <MailIcon />
-              </Badge>
-              <Badge color="secondary">
-                <CallIcon />
-              </Badge>
-              <Badge color="secondary">
-                <VideoCallIcon />
-              </Badge>
-            </Stack>
+          <div className="receiver-part">
+            <p>{user?.name}</p>
+            {user?.name && user.status=="Online" ? (
+              <small style={{ color: "#088408" }}>{user.status}</small>
+            ) : (
+              <small style={{ color: "silver" }}>last seen recently</small>
+            )}
           </div>
         </div>
-    
+
+        <div className="messaging-actions">
+          <Stack spacing={2} direction="row" sx={{ color: "action.active" }}>
+            <Badge color="secondary">
+              <MailIcon />
+            </Badge>
+            <Badge color="secondary">
+              <CallIcon />
+            </Badge>
+            <Badge color="secondary">
+              <VideoCallIcon />
+            </Badge>
+          </Stack>
+        </div>
+      </div>
+
       <div className="chatting-space">
         {!isSelected && (
           <div className="start-chat">Select a chat to start messaging </div>
