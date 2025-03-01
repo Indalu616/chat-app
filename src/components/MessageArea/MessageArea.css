@@ -101,6 +101,8 @@
   align-items: center;
   justify-content: center;
   background-color: white;
+  overflow: hidden;
+  z-index: 800;
 
 }
 .message-area-footer .input-area {
