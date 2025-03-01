@@ -62,7 +62,6 @@ function MessageArea({ open, setOpen, isSelected }) {
   }, [user.id, message]);
   return (
     <div className="message-area">
-      {isSelected && (
         <div className="message-area-header">
           <div className="message-area-header-left">
             <div
@@ -96,7 +95,7 @@ function MessageArea({ open, setOpen, isSelected }) {
             </Stack>
           </div>
         </div>
-      )}
+    
       <div className="chatting-space">
         {!isSelected && (
           <div className="start-chat">Select a chat to start messaging </div>
