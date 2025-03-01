@@ -7,7 +7,7 @@ const reducer = (state, action) => {
     case "CHANGE_USER":
       console.log(action.payload);
 
-      return { name: action.payload.name, id: action.payload.userId };
+      return { name: action.payload.name, id: action.payload.userId,status:action.payload.status };
     default:
       return state;
   }

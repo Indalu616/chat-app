@@ -114,7 +114,15 @@
   width: 30%;
   margin-left: 10px;
 }
-
+.start-chat{
+  padding: 1rem;
+  color: white;
+  background-color: #424874;
+  text-align: center;
+  display: inline-block;
+  border-radius: 32px;
+  align-self: center;
+}
 @media (max-width: 1030px) {
   .message-area {
     left: 0;

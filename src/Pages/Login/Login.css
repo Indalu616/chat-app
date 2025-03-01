@@ -20,9 +20,66 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+  gap: 2rem;
 }
-.login .login-container{
-    background-color: #FFFFFF;
-    padding: 1rem;
-    border-radius: 10px;
+
+.login .login-container {
+  background-color: #ffffff;
+  padding: 1rem;
+  border-radius: 10px;
+  width: 400px;
+  height: 450px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  position: relative;
+  padding-top: 5rem;
+  opacity: 0.8;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.1);
+  background: rgb(3, 36, 0);
+  background: linear-gradient(
+    90deg,
+    rgba(3, 36, 0, 0.891281512605042) 0%,
+    rgba(86, 9, 121, 1) 100%,
+    rgba(0, 212, 255, 1) 100%
+  );
+}
+.sign-with-google {
+  position: absolute;
+  /* width: 50px; */
+  height: 50px;
+  top: -25px;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sign-with-google .app-logo {
+  background-color: #1565c0;
+  padding: 1rem;
+  border-radius: 10px;
+  /* border: 2px solid white; */
+  background-image: linear-gradient(
+      195deg,
+      rgba(66, 66, 74, 0.6),
+      rgba(25, 25, 25, 0.6)
+    ),
+    url("../../images/login-bg.png");
+  -webkit-background-size: cover;
+  background-size: cover;
+  -webkit-background-position: center;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.sign-with-google .app-logo h2 {
+  -webkit-text-stroke: 2px white;
+  -webkit-text-fill-color: white;
+}
+
+@media (max-width: 768px) {
+  .login-container {
+    width: 300px !important;
+  }
 }

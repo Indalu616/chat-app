@@ -4,7 +4,15 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { Avatar } from "@mui/material";
 
+import {signOut } from "firebase/auth";
+import { auth, db } from "../../firebaseConfig";
+import { doc, updateDoc } from "firebase/firestore";
+import { useAuth } from "../AuthContext/AuthContext";
+import { useNavigate } from "react-router-dom";
+
 export default function UserProfile() {
+  const navigate=useNavigate()
+  const { currUser } = useAuth();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -12,6 +20,40 @@ export default function UserProfile() {
   };
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  // !sign out functionality
+
+  const logOut = async () => {
+    try {
+      signOut(auth)
+        .then(() => {
+          updateUser(currUser.uid);
+          navigate("/chat-app/login")
+
+          // Sign-out successful.
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } catch (error) {
+      console.log(error);
+    }
+    handleClose()
+  };
+
+  // !update user status in Users collection
+
+  const updateUser = async (id) => {
+    try {
+      const userRef = doc(db, "Users", id);
+      // Set the "status" field of the User 'Online'
+      await updateDoc(userRef, {
+        status: "last seen recently",
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -39,7 +81,7 @@ export default function UserProfile() {
       >
         <MenuItem onClick={handleClose}>Profile</MenuItem>
         <MenuItem onClick={handleClose}>My account</MenuItem>
-        <MenuItem onClick={handleClose}>Logout</MenuItem>
+        <MenuItem onClick={logOut}>Logout</MenuItem>
       </Menu>
     </div>
   );

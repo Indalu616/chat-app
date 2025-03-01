@@ -1,4 +1,4 @@
-import React, { useContext, useEffect,useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import "./sidebar.css";
 import CloseIcon from "@mui/icons-material/Close";
@@ -13,32 +13,30 @@ import {
 } from "@mui/material";
 import UserProfile from "../../components/UserProfile/Profile";
 import { UserContext } from "../../components/UserContext/UserContext";
-import {db } from "../../firebaseConfig";
+import { db } from "../../firebaseConfig";
+import { useAuth } from "../../components/AuthContext/AuthContext";
 
-
-function SideBar({ open, setOpen }) {
+function SideBar({ open, setOpen, setSelected }) {
   const [users, setUsers] = useState([]);
-  const {dispatch} = useContext(UserContext);
+  const {currUser}=useAuth();
+  const { dispatch } = useContext(UserContext);
   // !change user function
   const changeUser = (newUser) => {
     dispatch({ type: "CHANGE_USER", payload: newUser });
-    setOpen(false)
+    setOpen(false);
+    setSelected(true);
   };
   useEffect(() => {
     fetchData();
   }, []);
-  console.log(users)
+  console.log(users);
   // ! fetch users data from database
 
   const fetchData = async () => {
     try {
       const querySnapshot = await getDocs(collection(db, "Users"));
-      console.log(querySnapshot)
       querySnapshot.forEach((doc) => {
-        // doc.data() is never undefined for query doc snapshots
-        // console.log(doc.data())
-        setUsers((prev)=>[...prev,doc.data()])
-        // console.log(doc.id, " => ", doc.data());
+        setUsers((prev) => [...prev, doc.data()]);
       });
     } catch (error) {
       console.log(error);
@@ -50,11 +48,7 @@ function SideBar({ open, setOpen }) {
         <div className="close" onClick={() => setOpen(false)}>
           <CloseIcon style={{ color: "white" }} />
         </div>
-        <input
-          type="search"
-          className="input-box"
-          placeholder="Search..."
-        />
+        <input type="search" className="input-box" placeholder="Search..." />
         <div className="user">
           <UserProfile />
         </div>
@@ -63,9 +57,13 @@ function SideBar({ open, setOpen }) {
       <div className="side-bar-body">
         <div className="sider-bar-user">
           <List>
-            {users?.map((user) => {
+            {users?.filter((u)=>u.email!==currUser.email).map((user) => {
               return (
-                <ListItem key={user?.userId} disablePadding onClick={()=>changeUser(user)}>
+                <ListItem
+                  key={user?.userId}
+                  disablePadding
+                  onClick={() => changeUser(user)}
+                >
                   <ListItemButton>
                     <ListItemIcon>
                       <Avatar
@@ -73,7 +71,12 @@ function SideBar({ open, setOpen }) {
                         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtuphMb4mq-EcVWhMVT8FCkv5dqZGgvn_QiA&s"
                       />
                     </ListItemIcon>
-                    <ListItemText primary={user?.name} style={{ color: "#EEF5FF" }} />
+                    <ListItemText>
+                      <p style={{marginBottom:"0px",color:"white"}}>{user?.name}</p>
+                      {user?.status=="Online"?<small style={{color:"#088408"}}>Online</small>:<small style={{color:"silver"}}>last seen recently</small>}
+                    </ListItemText>
+                  
+                    
                   </ListItemButton>
                 </ListItem>
               );
